@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white"
+    android:textColor="@color/black">
+    <ImageView
+        android:id="@+id/menuimage"
+        android:layout_width="253dp"
+        android:layout_height="124dp"
+        android:adjustViewBounds="true"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"/>
+    <TextView
+        android:id="@+id/searchmenuview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recipe"
+        android:gravity="center"
+        android:textColor="@color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/infocar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="car"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/infoeng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="eng"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/infofat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fat"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/infona"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="na"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/infopro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="pro"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:layout_weight="5">
+        <TextView
+            android:id="@+id/menual01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="레시피1"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/menual02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="레시피2"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/menual03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="레시피3"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
