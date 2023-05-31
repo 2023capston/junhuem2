@@ -31,7 +31,8 @@
             android:layout_marginTop="45dp"
             android:background="@drawable/searchbox"
             android:textColor="@color/black"
-            android:hint="재료를 입력" />
+            android:hint="재료를 입력"
+            android:paddingStart="10dp"/>
 
 
     </RelativeLayout>

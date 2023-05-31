@@ -206,9 +206,11 @@ public class SearchList extends AppCompatActivity {
                             for (Map<String, Object> dataMap : sortedData) {
                                 String rcp_nm = dataMap.get("RCP_NM").toString();
                                 int Priority = (int) dataMap.get("Priority");
-
                             }
-                            for (Map<String, Object> dataMap : sortedData) {
+                            List<Map<String, Object>> distinctList = sortedData.stream()
+                                    .distinct()
+                                    .collect(Collectors.toList());
+                            for (Map<String, Object> dataMap : distinctList) {
                                 String rcp_nm = dataMap.get("RCP_NM").toString();
                                 String att_file_no_main = dataMap.get("ATT_FILE_NO_MAIN").toString();
                                 String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
