@@ -2,6 +2,7 @@ package com.example.yolijoli;
 
 import static android.service.controls.ControlsProviderService.TAG;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +39,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class SearchList extends AppCompatActivity {
+
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference conditionRef = mRootRef.child("COOKRCP01/row");
 
@@ -48,15 +52,23 @@ public class SearchList extends AppCompatActivity {
 
     private ListView listview = null;
     private ListViewAdapter adapter = null;
+
+
+
+// 데이터 로딩 시작 전에 ProgressDialog를 설정
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchlist);
 
+// 데이터 로딩 시작 시에 ProgressDialog를 표시
+
 
         listview = (ListView) findViewById(R.id.listView);
         idText = (EditText) findViewById(R.id.idtext);
         recipeClick =(ImageButton) findViewById(R.id.recipeclick);
+
         idText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
@@ -96,10 +108,13 @@ public class SearchList extends AppCompatActivity {
 
 
         conditionRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 ArrayList<Map<String, Object>> sortedDataList = new ArrayList<>();
+
                 for (DataSnapshot data : task.getResult().getChildren()) {
+
                     Map<String, Object> dataMap = (Map<String, Object>) data.getValue();
                     String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
                     conditionRef.orderByChild("RCP_PARTS_DTLS").equalTo(rcp_parts_dtls.contains(ingred1) ? rcp_parts_dtls.contains(ingred2) ? rcp_parts_dtls.contains(ingred3) ? rcp_parts_dtls.contains(ingred4) ? rcp_parts_dtls.contains(ingred5) ? rcp_parts_dtls.contains(ingred6) ? rcp_parts_dtls.contains(ingred7) ? rcp_parts_dtls : "" : "" : "" : "" : "" : "" : "").addValueEventListener(new ValueEventListener() {
@@ -109,6 +124,8 @@ public class SearchList extends AppCompatActivity {
                             adapter = new ListViewAdapter();
 
                             for (DataSnapshot data : snapshot.getChildren()) {
+
+
                                 Map<String, Object> dataMap = (Map<String, Object>) data.getValue();
                                 String rcp_nm = dataMap.get("RCP_NM").toString();
                                 String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
@@ -203,10 +220,7 @@ public class SearchList extends AppCompatActivity {
                             List<Map<String, Object>> sortedData = sortedDataList.stream()
                                     .sorted(Comparator.comparingInt(data -> (int) ((Map<String, Object>) data).get("Priority")).reversed())
                                     .collect(Collectors.toList());
-                            for (Map<String, Object> dataMap : sortedData) {
-                                String rcp_nm = dataMap.get("RCP_NM").toString();
-                                int Priority = (int) dataMap.get("Priority");
-                            }
+
                             List<Map<String, Object>> distinctList = sortedData.stream()
                                     .distinct()
                                     .collect(Collectors.toList());
@@ -217,7 +231,10 @@ public class SearchList extends AppCompatActivity {
                                 int Priority = (int) dataMap.get("Priority");
                                 adapter.addItem(new ListItem(null, rcp_nm, rcp_parts_dtls,att_file_no_main));
                                 listview.setAdapter(adapter);
+
+
                             }
+
                         }
 
                         @Override
@@ -226,9 +243,14 @@ public class SearchList extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "그런 메뉴는 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
                         }
                     });
+
+
                 }
+
+
             }
         });
+
     }
     public class ListViewAdapter extends BaseAdapter {
         ArrayList<ListItem> items = new ArrayList<ListItem>();
@@ -252,6 +274,7 @@ public class SearchList extends AppCompatActivity {
         }
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
+
             final Context context = viewGroup.getContext();
             final ListItem listItem = items.get(position);
             if(convertView == null) {
@@ -265,6 +288,10 @@ public class SearchList extends AppCompatActivity {
             TextView nm = (TextView) convertView.findViewById(R.id.rcp_nm);
             Glide.with(getApplicationContext()).load(listItem.getAtt_file_no_main()).into(menuImage);
             nm.setText(listItem.getRcp_nm());
+            if (position == getCount() - 1) {
+                // 리스트뷰의 마지막 아이템인 경우
+
+            }
             //각 아이템 선택 이벤트
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -280,5 +307,6 @@ public class SearchList extends AppCompatActivity {
     }
     protected void onStart() {
         super.onStart();
+
     }
 }
