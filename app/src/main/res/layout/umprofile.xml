@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".UmProfile">
+
+
+    <EditText
+        android:id="@+id/idtext"
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/inputbox"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:hint="재료를 입력해주세요. (,)"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="1300dp"
+        android:layout_marginTop="100dp">
+
+        <RelativeLayout
+            android:id="@+id/box1"
+            android:layout_width="311dp"
+            android:layout_height="1300dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp">
+
+            <View
+                android:layout_width="103dp"
+                android:id="@+id/myrecipe"
+                android:layout_height="53.4dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="61dp"
+                android:background="@drawable/mainicon2" />
+
+            <View
+                android:layout_width="13.38dp"
+                android:layout_height="19.84dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="31.71dp"
+                android:layout_marginTop="85.41dp"
+                android:background="@drawable/mainicon" />
+
+            <View
+                android:layout_width="103dp"
+                android:layout_height="88.49dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="120.51dp"
+                android:background="@drawable/mainicon2" />
+
+            <View
+                android:layout_width="13.38dp"
+                android:layout_height="38.14dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="31.71dp"
+                android:layout_marginTop="131.19dp"
+                android:background="@drawable/mainicon" />
+
+            <ImageView
+                android:id="@+id/maintext1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="0dp"
+                android:src="@drawable/maintext1"
+                ></ImageView>
+
+
+
+            <ListView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="80dp">
+
+            </ListView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="225dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="115dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/foodadd"
+                    android:layout_marginRight="56dp"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:background="@android:color/transparent"
+                    />
+
+                <ImageButton
+                    android:id="@+id/signupbtn"
+                    android:layout_width="115dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/fooddel"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:background="@android:color/transparent" />
+
+
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/box2"
+                android:layout_width="311dp"
+                android:layout_height="290dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="300dp">
+
+                <ImageView
+                    android:id="@+id/maintext2"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/maintext2"
+                    ></ImageView>
+                <ImageView
+                    android:id="@+id/recipeclick"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/click" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/box3"
+                android:layout_width="311dp"
+                android:layout_height="290dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="600dp">
+
+
+                <ImageView
+                    android:id="@+id/maintext3"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/maintext3"
+                    ></ImageView>
+
+                <ImageView
+                    android:id="@+id/comuclick"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/click" />
+
+            </RelativeLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </ScrollView>
+
+</RelativeLayout>

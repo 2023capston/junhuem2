@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "525035133084",
+    "firebase_url": "https://cheffirebase-eca65-default-rtdb.firebaseio.com",
+    "project_id": "cheffirebase-eca65",
+    "storage_bucket": "cheffirebase-eca65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525035133084:android:0dbc1bb93d71e7dd627559",
+        "android_client_info": {
+          "package_name": "com.example.yolijoli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525035133084-408b26ce86rppalv2t00vmfh4ob8m407.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yolijoli",
+            "certificate_hash": "1d629ad6e9cb47c67ee7e1f487a074e821833b93"
+          }
+        },
+        {
+          "client_id": "525035133084-tlg1phqrcbvt477nf1oap2t1c89eal8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNremOr9o2gYjBKjMCVRKbyiCMH89rzcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525035133084-tlg1phqrcbvt477nf1oap2t1c89eal8m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
