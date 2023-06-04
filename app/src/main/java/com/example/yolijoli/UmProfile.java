@@ -19,7 +19,7 @@ import java.util.List;
 
 public class UmProfile extends AppCompatActivity {
     private EditText idText;
-    private View myRecipe;
+    private View myMenu;
     private ImageButton signUpBtn;
 
     @Override
@@ -28,7 +28,7 @@ public class UmProfile extends AppCompatActivity {
         setContentView(R.layout.umprofile);
         idText = (EditText) findViewById(R.id.idtext);
         signUpBtn =(ImageButton) findViewById(R.id.signupbtn);
-        myRecipe = (View) findViewById(R.id.myrecipe);
+        myMenu = (View) findViewById(R.id.mymenu);
         idText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
@@ -55,12 +55,12 @@ public class UmProfile extends AppCompatActivity {
     //ActivityResultLauncher 안드로이드 갤러리 카메라 관련기능
     protected void onStart() {
         super.onStart();
-        myRecipe.setOnClickListener(new View.OnClickListener() {
+        myMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent("com.example.yolijoli.START_MAINACTIVITY");//화면 넘기기
-                startActivity(intent);//화면 넘기기
+                startActivity(new Intent(UmProfile.this,MainActivity.class));
+                finish();
 
             }
         });

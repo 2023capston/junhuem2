@@ -35,7 +35,7 @@
 
             <View
                 android:layout_width="103dp"
-                android:id="@+id/myrecipe"
+                android:id="@+id/mymenu"
                 android:layout_height="53.4dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="17dp"
