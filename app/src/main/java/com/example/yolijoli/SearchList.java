@@ -112,141 +112,129 @@ public class SearchList extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 ArrayList<Map<String, Object>> sortedDataList = new ArrayList<>();
+                adapter = null;
+                adapter = new ListViewAdapter();
 
                 for (DataSnapshot data : task.getResult().getChildren()) {
 
                     Map<String, Object> dataMap = (Map<String, Object>) data.getValue();
                     String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
-                    conditionRef.orderByChild("RCP_PARTS_DTLS").equalTo(rcp_parts_dtls.contains(ingred1) ? rcp_parts_dtls.contains(ingred2) ? rcp_parts_dtls.contains(ingred3) ? rcp_parts_dtls.contains(ingred4) ? rcp_parts_dtls.contains(ingred5) ? rcp_parts_dtls.contains(ingred6) ? rcp_parts_dtls.contains(ingred7) ? rcp_parts_dtls : "" : "" : "" : "" : "" : "" : "").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            adapter = null;
-                            adapter = new ListViewAdapter();
-
-                            for (DataSnapshot data : snapshot.getChildren()) {
+                    if (rcp_parts_dtls.contains(ingred1) && rcp_parts_dtls.contains(ingred2) && rcp_parts_dtls.contains(ingred3) && rcp_parts_dtls.contains(ingred4) && rcp_parts_dtls.contains(ingred5) && rcp_parts_dtls.contains(ingred6) && rcp_parts_dtls.contains(ingred7)) {
 
 
-                                Map<String, Object> dataMap = (Map<String, Object>) data.getValue();
-                                String rcp_nm = dataMap.get("RCP_NM").toString();
-                                String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
-                                int Pri = 0;
-                                if (!ingred1.isEmpty()) {
-                                    int count = 0;
-                                    int index = 0;
-                                    while ((index = rcp_parts_dtls.indexOf(ingred1, index)) != -1) {
-                                        count++;
-                                        index += ingred1.length();
-                                    }
-                                    Pri= Pri+count;//재료가 레시피에 등장하는 만큼 우선순위점수++
-                                    if (rcp_nm.contains(ingred1)) {//제목에 재료가 포함된다면 우선순위 점수++
-                                        Pri=Pri+2;
-                                    }
-                                }
-                                if (!ingred2.isEmpty()) {
-                                    int count = 0;
-                                    int index = 0;
-                                    while ((index = rcp_parts_dtls.indexOf(ingred2, index)) != -1) {
-                                        count++;
-                                        index += ingred2.length();
-                                    }
-                                    Pri= Pri+count;//재료가 레시피에 등장하는 만큼 우선순위점수++
-                                    if (rcp_nm.contains(ingred2)) {//제목에 재료가 포함된다면 우선순위 점수++
-                                        Pri=Pri+2;
-                                    }
-                                }
-                                if (!ingred3.isEmpty()) {//재료가 있다면?
-                                    int count = 0;
-                                    int index = 0;
-                                    while ((index = rcp_parts_dtls.indexOf(ingred3, index)) != -1) {
-                                        count++;
-                                        index += ingred3.length();
-                                    }
-                                    Pri= Pri+count;//재료가 레시피에 등장하는 만큼 우선순위점수++
-                                    if(rcp_nm.contains(ingred3)) {//제목에 재료가 포함된다면 우선순위 점수++
-                                        Pri=Pri+2;
-                                    }
-                                }
-                                if (!ingred4.isEmpty()) {
-                                    int count = 0;
-                                    int index = 0;
-                                    while ((index = rcp_parts_dtls.indexOf(ingred4, index)) != -1) {
-                                        count++;
-                                        index += ingred4.length();
-                                    }
-                                    Pri= Pri+count;//재료가 레시피에 등장하는 만큼 우선순위점수++
-                                    if (rcp_nm.contains(ingred4)) {//제목에 재료가 포함된다면 우선순위 점수++
-                                        Pri=Pri+2;
-                                    }
-                                }
-                                if (!ingred5.isEmpty()) {
-                                    int count = 0;
-                                    int index = 0;
-                                    while ((index = rcp_parts_dtls.indexOf(ingred5, index)) != -1) {
-                                        count++;
-                                        index += ingred5.length();
-                                    }
-                                    Pri= Pri+count;//재료가 레시피에 등장하는 만큼 우선순위점수++
-                                    if (rcp_nm.contains(ingred5)) {//제목에 재료가 포함된다면 우선순위 점수++
-                                        Pri=Pri+2;
-                                    }
-                                }
-                                if (!ingred6.isEmpty()) {
-                                    int count = 0;
-                                    int index = 0;
-                                    while ((index = rcp_parts_dtls.indexOf(ingred6, index)) != -1) {
-                                        count++;
-                                        index += ingred6.length();
-                                    }
-                                    Pri= Pri+count;//재료가 레시피에 등장하는 만큼 우선순위점수++
-                                    if (rcp_nm.contains(ingred6)) {//제목에 재료가 포함된다면 우선순위 점수++
-                                        Pri=Pri+2;
-                                    }
-                                }
-                                if (!ingred7.isEmpty()) {
-                                    int count = 0;
-                                    int index = 0;
-                                    while ((index = rcp_parts_dtls.indexOf(ingred7, index)) != -1) {
-                                        count++;
-                                        index += ingred7.length();
-                                    }
-                                    Pri= Pri+count;//재료가 레시피에 등장하는 만큼 우선순위점수++
-                                    if (rcp_nm.contains(ingred7)) {//제목에 재료가 포함된다면 우선순위 점수++
-                                        Pri=Pri+2;
-                                    }
-                                }
-                                dataMap.put("Priority", Pri);
-                                sortedDataList.add(dataMap);
+
+                        String rcp_nm = dataMap.get("RCP_NM").toString();
+
+                        int Pri = 0;
+                        if (!ingred1.isEmpty()) {
+                            int count = 0;
+                            int index = 0;
+                            while ((index = rcp_parts_dtls.indexOf(ingred1, index)) != -1) {
+                                count++;
+                                index += ingred1.length();
                             }
-                            List<Map<String, Object>> sortedData = sortedDataList.stream()
-                                    .sorted(Comparator.comparingInt(data -> (int) ((Map<String, Object>) data).get("Priority")).reversed())
-                                    .collect(Collectors.toList());
-
-                            List<Map<String, Object>> distinctList = sortedData.stream()
-                                    .distinct()
-                                    .collect(Collectors.toList());
-                            for (Map<String, Object> dataMap : distinctList) {
-                                String rcp_nm = dataMap.get("RCP_NM").toString();
-                                String att_file_no_main = dataMap.get("ATT_FILE_NO_MAIN").toString();
-                                String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
-                                int Priority = (int) dataMap.get("Priority");
-                                adapter.addItem(new ListItem(null, rcp_nm, rcp_parts_dtls,att_file_no_main));
-                                listview.setAdapter(adapter);
-
-
+                            Pri = Pri + count;//재료가 레시피에 등장하는 만큼 우선순위점수++
+                            if (rcp_nm.contains(ingred1)) {//제목에 재료가 포함된다면 우선순위 점수++
+                                Pri = Pri + 2;
                             }
-
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Log.w(TAG, "The read failed: " + error.getCode());
-                            Toast.makeText(getApplicationContext(), "그런 메뉴는 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
+                        if (!ingred2.isEmpty()) {
+                            int count = 0;
+                            int index = 0;
+                            while ((index = rcp_parts_dtls.indexOf(ingred2, index)) != -1) {
+                                count++;
+                                index += ingred2.length();
+                            }
+                            Pri = Pri + count;//재료가 레시피에 등장하는 만큼 우선순위점수++
+                            if (rcp_nm.contains(ingred2)) {//제목에 재료가 포함된다면 우선순위 점수++
+                                Pri = Pri + 2;
+                            }
                         }
-                    });
+                        if (!ingred3.isEmpty()) {//재료가 있다면?
+                            int count = 0;
+                            int index = 0;
+                            while ((index = rcp_parts_dtls.indexOf(ingred3, index)) != -1) {
+                                count++;
+                                index += ingred3.length();
+                            }
+                            Pri = Pri + count;//재료가 레시피에 등장하는 만큼 우선순위점수++
+                            if (rcp_nm.contains(ingred3)) {//제목에 재료가 포함된다면 우선순위 점수++
+                                Pri = Pri + 2;
+                            }
+                        }
+                        if (!ingred4.isEmpty()) {
+                            int count = 0;
+                            int index = 0;
+                            while ((index = rcp_parts_dtls.indexOf(ingred4, index)) != -1) {
+                                count++;
+                                index += ingred4.length();
+                            }
+                            Pri = Pri + count;//재료가 레시피에 등장하는 만큼 우선순위점수++
+                            if (rcp_nm.contains(ingred4)) {//제목에 재료가 포함된다면 우선순위 점수++
+                                Pri = Pri + 2;
+                            }
+                        }
+                        if (!ingred5.isEmpty()) {
+                            int count = 0;
+                            int index = 0;
+                            while ((index = rcp_parts_dtls.indexOf(ingred5, index)) != -1) {
+                                count++;
+                                index += ingred5.length();
+                            }
+                            Pri = Pri + count;//재료가 레시피에 등장하는 만큼 우선순위점수++
+                            if (rcp_nm.contains(ingred5)) {//제목에 재료가 포함된다면 우선순위 점수++
+                                Pri = Pri + 2;
+                            }
+                        }
+                        if (!ingred6.isEmpty()) {
+                            int count = 0;
+                            int index = 0;
+                            while ((index = rcp_parts_dtls.indexOf(ingred6, index)) != -1) {
+                                count++;
+                                index += ingred6.length();
+                            }
+                            Pri = Pri + count;//재료가 레시피에 등장하는 만큼 우선순위점수++
+                            if (rcp_nm.contains(ingred6)) {//제목에 재료가 포함된다면 우선순위 점수++
+                                Pri = Pri + 2;
+                            }
+                        }
+                        if (!ingred7.isEmpty()) {
+                            int count = 0;
+                            int index = 0;
+                            while ((index = rcp_parts_dtls.indexOf(ingred7, index)) != -1) {
+                                count++;
+                                index += ingred7.length();
+                            }
+                            Pri = Pri + count;//재료가 레시피에 등장하는 만큼 우선순위점수++
+                            if (rcp_nm.contains(ingred7)) {//제목에 재료가 포함된다면 우선순위 점수++
+                                Pri = Pri + 2;
+                            }
+                        }
+                        dataMap.put("Priority", Pri);
+                        sortedDataList.add(dataMap);
 
 
                 }
 
+
+                }
+                List<Map<String, Object>> sortedData = sortedDataList.stream()
+                        .sorted(Comparator.comparingInt(data -> (int) ((Map<String, Object>) data).get("Priority")).reversed())
+                        .collect(Collectors.toList());
+
+                List<Map<String, Object>> distinctList = sortedData.stream()
+                        .distinct()
+                        .collect(Collectors.toList());
+                for (Map<String, Object> dataMap : distinctList) {
+                    String rcp_nm = dataMap.get("RCP_NM").toString();
+                    String att_file_no_main = dataMap.get("ATT_FILE_NO_MAIN").toString();
+                    String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
+                    int Priority = (int) dataMap.get("Priority");
+                    adapter.addItem(new ListItem(null, rcp_nm, rcp_parts_dtls, att_file_no_main));
+                    listview.setAdapter(adapter);
+
+
+                }
 
             }
         });
