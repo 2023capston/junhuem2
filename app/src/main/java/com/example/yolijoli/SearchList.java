@@ -120,9 +120,6 @@ public class SearchList extends AppCompatActivity {
                     Map<String, Object> dataMap = (Map<String, Object>) data.getValue();
                     String rcp_parts_dtls = dataMap.get("RCP_PARTS_DTLS").toString();
                     if (rcp_parts_dtls.contains(ingred1) && rcp_parts_dtls.contains(ingred2) && rcp_parts_dtls.contains(ingred3) && rcp_parts_dtls.contains(ingred4) && rcp_parts_dtls.contains(ingred5) && rcp_parts_dtls.contains(ingred6) && rcp_parts_dtls.contains(ingred7)) {
-
-
-
                         String rcp_nm = dataMap.get("RCP_NM").toString();
 
                         int Pri = 0;
@@ -215,8 +212,6 @@ public class SearchList extends AppCompatActivity {
 
 
                 }
-
-
                 }
                 List<Map<String, Object>> sortedData = sortedDataList.stream()
                         .sorted(Comparator.comparingInt(data -> (int) ((Map<String, Object>) data).get("Priority")).reversed())

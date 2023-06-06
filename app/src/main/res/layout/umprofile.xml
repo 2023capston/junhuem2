@@ -122,7 +122,8 @@
                 android:layout_width="311dp"
                 android:layout_height="290dp"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="300dp">
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="0dp" >
 
                 <ImageView
                     android:id="@+id/maintext2"
@@ -140,6 +141,15 @@
                     android:layout_marginTop="20dp"
                     android:src="@drawable/click" />
 
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="687dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginBottom="0dp" />
 
             </RelativeLayout>
 
@@ -148,14 +158,14 @@
                 android:layout_width="311dp"
                 android:layout_height="290dp"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="600dp">
+                android:layout_marginTop="700dp">
 
 
                 <ImageView
                     android:id="@+id/maintext3"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/maintext3"
                     ></ImageView>
@@ -165,7 +175,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="220dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="50dp"
                     android:src="@drawable/click" />
 
             </RelativeLayout>
